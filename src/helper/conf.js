@@ -1,0 +1,1 @@
+export const fastfoodname = 'Yum Zone'
