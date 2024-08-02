@@ -1,0 +1,8 @@
+Run the server: flask --app app run
+Run the server with debugger: flask --app app run --debug
+
+Migrate db:
+1- handly create db (** First migration only **) 
+2- flask db init (** First migration only **) 
+3- flask db migrate -m "**Label**"
+4- flask db upgrade
