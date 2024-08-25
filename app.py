@@ -327,7 +327,7 @@ class MessageService:
         return [message.serialize() for message in messages]
     
     def create(is_bot, content, id_user):
-        message = Message(is_bot, content, id_user)
+        message = Message(is_bot=is_bot, content=content, id_user=id_user)
         db.session.add(message)
         db.session.commit()
 
@@ -544,6 +544,7 @@ def google_log_in():
 @app.route('/api/message/save', methods=['POST'])
 def save_message():
     id_user, is_bot, content = RequestService.get_form_data('id_user', 'is_bot', 'content')
+    print(content, is_bot, is_bot == "true")
     MessageService.create(is_bot= is_bot == "true", content=content, id_user=id_user)
 
     return make_response('', 201)

@@ -1,8 +1,8 @@
-"""end
+"""**Label**
 
-Revision ID: ebc1cf18d24c
+Revision ID: 2cf57a46967d
 Revises: 
-Create Date: 2024-05-09 15:18:26.990064
+Create Date: 2024-08-07 08:54:13.308249
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import mysql
 
 # revision identifiers, used by Alembic.
-revision = 'ebc1cf18d24c'
+revision = '2cf57a46967d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,7 +42,7 @@ def upgrade():
     op.create_table('Dish',
     sa.Column('id_dish', sa.Integer(), nullable=False),
     sa.Column('name_dish', sa.String(length=63), nullable=True),
-    sa.Column('unit_price', sa.Float(), nullable=True),
+    sa.Column('unit_price', sa.Integer(), nullable=True),
     sa.Column('has_pork', sa.Boolean(), nullable=True),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('id_cat', sa.Integer(), nullable=False),
@@ -61,6 +61,8 @@ def upgrade():
     sa.Column('id_order', sa.Integer(), nullable=False),
     sa.Column('date_order', sa.DateTime(), nullable=True),
     sa.Column('id_user', sa.Integer(), nullable=False),
+    sa.Column('delivery_place', sa.String(length=255), nullable=True),
+    sa.Column('dine_in', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['id_user'], ['User.id_user'], ),
     sa.PrimaryKeyConstraint('id_order')
     )
